@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+
+body {
+    max-width: 750px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}

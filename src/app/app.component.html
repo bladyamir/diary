@@ -1,0 +1,38 @@
+<md-toolbar color="primary">
+  <span>NgDiary</span>
+  <span class="spacer"></span>
+  <span><i>A personal diary</i></span>
+</md-toolbar>
+
+<md-card>
+  <md-card-title>New diary entry</md-card-title>
+  <md-card-content>
+    <md-input-container>
+      <input #inputText type="text" mdInput placeholder="Title"
+        maxlength="30" [(ngModel)]="newPost.title">
+      <md-hint align="end">{{inputText.value.length}} / 30</md-hint>
+    </md-input-container>
+    <p>
+      <md-input-container>
+        <textarea #textArea mdInput name="textarea" rows="10" cols="50" 
+          placeholder="Write something here"
+          [(ngModel)]="newPost.body"></textarea>
+      </md-input-container>
+    </p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-icon-button mdTooltip="Add post" (click)="addPost()"><md-icon>check</md-icon></button>
+  </md-card-actions>
+</md-card>
+
+<md-card *ngFor="let post of posts">
+  <md-card-subtitle>{{post.creationTime | date:'medium'}}</md-card-subtitle>
+  <md-card-title>{{post.title}}</md-card-title>
+  <md-card-content>{{post.body}}</md-card-content>
+  <md-card-actions>
+    <button md-icon-button mdTooltip="Edit post"><md-icon>create</md-icon></button>
+    <button md-icon-button mdTooltip="Remove post" (click)="removePost(post)"><md-icon>delete</md-icon></button>
+    <button md-icon-button mdTooltip="I like it!"><md-icon>thumb_up</md-icon></button>
+    <button md-icon-button mdTooltip="Argh!"><md-icon>thumb_down</md-icon></button>
+  </md-card-actions>
+</md-card>
